@@ -28,9 +28,9 @@ class DataTransformation:
         
         '''
         try:
-            numerical_columns = ["transaction_id", 'user_id', 'amount', 'hour', 'device_risk_score', 'ip_risk_score', 'is_fraud']
+            numerical_columns = ['transaction_id', 'user_id', 'amount', 'hour', 'device_risk_score', 'ip_risk_score']
             categorical_columns = [
-                ['transaction_type', 'merchant_category', 'country']
+                'transaction_type', 'merchant_category', 'country'
             ]
 
             num_pipeline= Pipeline(
@@ -81,13 +81,12 @@ class DataTransformation:
 
             preprocessing_obj=self.get_data_transformer_object()
 
-            target_column_name="math_score"
+            target_column_name="is_fraud"
 
-            input_feature_train_df=train_df.drop(columns=[target_column_name],axis=1)
-            target_feature_train_df=train_df[target_column_name]
-
-            input_feature_test_df=test_df.drop(columns=[target_column_name],axis=1)
-            target_feature_test_df=test_df[target_column_name]
+            input_feature_train_df = train_df.drop(columns=[target_column_name], axis=1)
+            target_feature_train_df = train_df[target_column_name]
+            input_feature_test_df = test_df.drop(columns=[target_column_name], axis=1)
+            target_feature_test_df = test_df[target_column_name]
 
             logging.info(
                 "Applying preprocessing object on training dataframe and testing dataframe."
